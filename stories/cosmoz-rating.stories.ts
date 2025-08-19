@@ -41,6 +41,7 @@ const Template = ({ rating, disabled, maxRating }: CosmozRatingProps) => {
 				?disabled="${disabled}"
 				max-rating="${maxRating || 5}"
 				@rating="${(e: CustomEvent) => {
+					// eslint-disable-next-line no-console
 					console.log('Rating changed:', e.detail.rating);
 				}}"
 			>

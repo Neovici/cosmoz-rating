@@ -1,5 +1,5 @@
 import { expect, fixture, html, nextFrame } from '@open-wc/testing';
-import sinon from 'sinon';
+import { spy } from 'sinon';
 import '../src/index.js';
 
 describe('cosmoz-rating', () => {
@@ -73,7 +73,7 @@ describe('cosmoz-rating', () => {
 
 	it('should emit rating event when star is clicked', async () => {
 		const el = await fixture(html`<cosmoz-rating></cosmoz-rating>`);
-		const eventSpy = sinon.spy();
+		const eventSpy = spy();
 
 		el.addEventListener('rating', eventSpy);
 
@@ -94,7 +94,7 @@ describe('cosmoz-rating', () => {
 
 	it('should not emit rating event when disabled', async () => {
 		const el = await fixture(html`<cosmoz-rating disabled></cosmoz-rating>`);
-		const eventSpy = sinon.spy();
+		const eventSpy = spy();
 
 		el.addEventListener('rating', eventSpy);
 
