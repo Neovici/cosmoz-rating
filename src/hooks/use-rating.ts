@@ -1,4 +1,4 @@
-import { useState, html } from '@pionjs/pion';
+import { useState, html, useEffect } from '@pionjs/pion';
 
 import { CosmozRatingElement } from '../../types/cosmoz-rating.types';
 
@@ -10,6 +10,15 @@ const useRating = (host: CosmozRatingElement) => {
 	const disabled = host.hasAttribute('disabled');
 	const maxRatingAttr = host.getAttribute('max-rating');
 	const maxRating = maxRatingAttr ? parseInt(maxRatingAttr, 10) : 5;
+
+	useEffect(() => {
+		// Set appropriate tabIndex for accessibility
+		if (!disabled && host.tabIndex === -1) {
+			host.tabIndex = 0;
+		} else if (disabled) {
+			host.tabIndex = -1;
+		}
+	}, [disabled]);
 
 	const getStarClass = (starIndex: number): string => {
 		const currentRating = hoveredRating ?? rating;

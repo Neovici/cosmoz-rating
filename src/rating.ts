@@ -1,19 +1,10 @@
-import { component, html, useEffect } from '@pionjs/pion';
+import { component, html } from '@pionjs/pion';
 import useRating from './hooks/use-rating';
 import { styles } from './rating.css';
 import { CosmozRatingElement } from '../types/cosmoz-rating.types';
 
 function Rating(host: CosmozRatingElement) {
 	const { disabled, maxRating, setHoveredRating, renderStar } = useRating(host);
-
-	useEffect(() => {
-		// Set appropriate tabIndex for accessibility
-		if (!disabled && host.tabIndex === -1) {
-			host.tabIndex = 0;
-		} else if (disabled) {
-			host.tabIndex = -1;
-		}
-	}, [disabled]);
 
 	const handleMouseLeave = () => {
 		if (!disabled) {
