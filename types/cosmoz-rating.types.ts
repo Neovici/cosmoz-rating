@@ -11,5 +11,3 @@ export interface CosmozRatingProps {
 }
 
 export interface CosmozRatingElement extends HTMLElement, CosmozRatingProps {}
-
-export {};

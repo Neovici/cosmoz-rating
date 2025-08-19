@@ -1,14 +1,9 @@
 import { component, html, useEffect } from '@pionjs/pion';
 import useRating from './hooks/use-rating';
 import { styles } from './rating.css';
+import { CosmozRatingElement } from '../types/cosmoz-rating.types';
 
-interface RatingProps {
-	rating?: number | null;
-	disabled?: boolean;
-	maxRating?: number;
-}
-
-function Rating(host: HTMLElement & RatingProps) {
+function Rating(host: CosmozRatingElement) {
 	const { disabled, maxRating, setHoveredRating, renderStar } = useRating(host);
 
 	useEffect(() => {
