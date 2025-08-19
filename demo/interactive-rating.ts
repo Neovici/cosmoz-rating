@@ -4,6 +4,7 @@ import '../src/index';
 const style = css`
 	cosmoz-rating {
 		--rating-star-color: #01c92d;
+		--rating-star-color-empty: #48665150;
 	}
 `;
 

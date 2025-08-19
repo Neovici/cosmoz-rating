@@ -1,37 +1,37 @@
-export const styles = `
-  :host {
-    display: inline-block;
-    --rating-star-color: #ffd700;
-    --rating-star-color-empty: #d3d3d3;
-    --rating-star-color-hover: #ffed4a;
-    --rating-star-size: 24px;
-    --rating-star-gap: 2px;
-  }
+import { css } from '@pionjs/pion';
 
-  :host([disabled]) {
-    pointer-events: none;
-  }
+export const styles = css`
+	:host {
+		display: inline-block;
+		--rating-star-color: #ffd700;
+		--rating-star-color-empty: #d3d3d3;
+		--rating-star-color-hover: #ffed4a;
+		--rating-star-size: 24px;
+		--rating-star-gap: 2px;
+	}
 
-  .rating-container {
-    display: flex;
-    gap: var(--rating-star-gap);
-    align-items: center;
-  }
+	:host([disabled]) {
+		pointer-events: none;
+	}
 
-  .star {
-    width: var(--rating-star-size);
-    height: var(--rating-star-size);
-    cursor: pointer;
-    transition: fill 0.2s ease;
-  }
+	.rating-container {
+		display: flex;
+		gap: var(--rating-star-gap);
+		align-items: center;
+	}
 
-  :host([disabled]) .star {
-    cursor: default;
-  }
+	.star {
+		width: var(--rating-star-size);
+		height: var(--rating-star-size);
+		cursor: pointer;
+		transition: fill 0.2s ease;
+	}
 
-  .star:hover path {
-    color: var(--rating-star-color-hover) !important;
-  }
+	:host([disabled]) .star {
+		cursor: default;
+	}
 
-
+	.star:hover path {
+		color: var(--rating-star-color-hover) !important;
+	}
 `;
