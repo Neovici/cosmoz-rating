@@ -11,7 +11,7 @@ if (SERVER_CHANNEL_URL) {
 }
 
 const importers = {
-  "./stories/cosmoz-rating.stories.ts": () => import('./cosmoz-rating.stories-C-amwcxa.js')
+  "./stories/cosmoz-rating.stories.ts": () => import('./cosmoz-rating.stories-Br7iYOeQ.js')
 };
 function importFn(path) {
   return importers[path]();
@@ -19,8 +19,8 @@ function importFn(path) {
 
 const getProjectAnnotations = async () => {
   const configs = await Promise.all([
-    import('./entry-preview-BatSasO0.js'),
-    import('./entry-preview-docs-Ct7PkLnw.js'),
+    import('./entry-preview-c-WJnWAy.js'),
+    import('./entry-preview-docs-BqXhnIuQ.js'),
     import('./preview-BoKxJalq.js'),
     import('./preview-BbsZ1HGL.js'),
     import('./preview-BlJG9B2P.js'),

@@ -1,4 +1,4 @@
-import { B, x } from './lit-html-8IiUFkrl.js';
+import { B, b, x } from './lit-html-CedCbRno.js';
 
 let current;
 let currentId = 0;
@@ -659,7 +659,7 @@ const useRating = (host) => {
   const handleStarClick = (starRating) => {
     if (disabled) return;
     host.dispatchEvent(
-      new CustomEvent("rating", {
+      new CustomEvent("change", {
         detail: { rating: starRating },
         bubbles: true,
         composed: true
@@ -667,9 +667,12 @@ const useRating = (host) => {
     );
   };
   const handleStarHover = (starRating) => {
-    if (!disabled) {
-      setHoveredRating(starRating);
-    }
+    if (disabled) return;
+    setHoveredRating(starRating);
+  };
+  const handleStarLeave = () => {
+    if (disabled) return;
+    setHoveredRating(null);
   };
   const renderStar = (index) => {
     const starRating = index + 1;
@@ -680,16 +683,7 @@ const useRating = (host) => {
       fillPercentage = Math.round(rating % 1 * 100);
     }
     const starPath = "M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z";
-    if (isPartial) {
-      return x`
-				<svg
-					class="${starClass}"
-					@click="${() => handleStarClick(starRating)}"
-					@mouseenter="${() => handleStarHover(starRating)}"
-					viewBox="0 0 24 24"
-					xmlns="http://www.w3.org/2000/svg"
-				>
-					<defs>
+    const partialPaths = b`<defs>
 						<clipPath id="clip-${index}">
 							<rect x="0" y="0" width="${fillPercentage}%" height="100%" />
 						</clipPath>
@@ -701,22 +695,20 @@ const useRating = (host) => {
 						d="${starPath}"
 						fill="var(--rating-star-color)"
 						clip-path="url(#clip-${index})"
-					></path>
-				</svg>
-			`;
-    }
+					></path>`;
     return x`
 			<svg
 				class="${starClass}"
 				@click="${() => handleStarClick(starRating)}"
 				@mouseenter="${() => handleStarHover(starRating)}"
+				@mouseleave="${handleStarLeave}"
 				viewBox="0 0 24 24"
 				xmlns="http://www.w3.org/2000/svg"
 			>
-				<path
+				${isPartial ? partialPaths : b`<path
 					d="${starPath}"
 					fill="${starClass.includes("filled") ? "var(--rating-star-color)" : "var(--rating-star-color-empty)"}"
-				></path>
+				></path>`}
 			</svg>
 		`;
   };
@@ -759,19 +751,14 @@ const styles = css`
 	}
 `;
 
-function Rating(host) {
-  const { disabled, maxRating, setHoveredRating, renderStar } = useRating(host);
-  const handleMouseLeave = () => {
-    if (!disabled) {
-      setHoveredRating(null);
-    }
-  };
+const Rating = (host) => {
+  const { maxRating, renderStar } = useRating(host);
   return x`
-		<div class="rating-container" @mouseleave="${handleMouseLeave}">
+		<div class="rating-container">
 			${Array.from({ length: maxRating }, (_, index) => renderStar(index))}
 		</div>
 	`;
-}
+};
 const CosmozRating = component(Rating, {
   observedAttributes: ["rating", "disabled", "max-rating"],
   useShadowDOM: true,
@@ -796,7 +783,7 @@ const InteractiveDemo = () => {
 			<cosmoz-rating
 				rating="${rating || ""}"
 				max-rating="${5}"
-				@rating="${handleRatingChange}"
+				@change="${handleRatingChange}"
 			>
 			</cosmoz-rating>
 
@@ -840,7 +827,7 @@ const Template = ({ rating, disabled, maxRating }) => {
 				rating="${rating || ""}"
 				?disabled="${disabled}"
 				max-rating="${maxRating || 5}"
-				@rating="${(e) => {
+				@change="${(e) => {
     console.log("Rating changed:", e.detail.rating);
   }}"
 			>

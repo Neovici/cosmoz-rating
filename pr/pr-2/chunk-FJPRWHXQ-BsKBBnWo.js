@@ -1,5 +1,5 @@
 import { d as dedent } from './index-Kjm4kNkQ.js';
-import { B, T } from './lit-html-8IiUFkrl.js';
+import { B, T } from './lit-html-CedCbRno.js';
 
 /**
  * @license
