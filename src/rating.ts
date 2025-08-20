@@ -3,21 +3,15 @@ import useRating from './hooks/use-rating';
 import { styles } from './rating.css';
 import { CosmozRatingElement } from '../types/cosmoz-rating.types';
 
-function Rating(host: CosmozRatingElement) {
-	const { disabled, maxRating, setHoveredRating, renderStar } = useRating(host);
-
-	const handleMouseLeave = () => {
-		if (!disabled) {
-			setHoveredRating(null);
-		}
-	};
+const Rating = (host: CosmozRatingElement) => {
+	const { maxRating, renderStar } = useRating(host);
 
 	return html`
-		<div class="rating-container" @mouseleave="${handleMouseLeave}">
+		<div class="rating-container">
 			${Array.from({ length: maxRating }, (_, index) => renderStar(index))}
 		</div>
 	`;
-}
+};
 
 const CosmozRating = component(Rating, {
 	observedAttributes: ['rating', 'disabled', 'max-rating'],

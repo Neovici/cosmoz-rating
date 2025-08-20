@@ -71,11 +71,11 @@ describe('cosmoz-rating', () => {
 		expect(computedStyle.pointerEvents).to.equal('none');
 	});
 
-	it('should emit rating event when star is clicked', async () => {
+	it('should emit change event when star is clicked', async () => {
 		const el = await fixture(html`<cosmoz-rating></cosmoz-rating>`);
 		const eventSpy = spy();
 
-		el.addEventListener('rating', eventSpy);
+		el.addEventListener('change', eventSpy);
 
 		const thirdStar = el.shadowRoot?.querySelectorAll('.star')[2];
 		expect(thirdStar).to.exist;

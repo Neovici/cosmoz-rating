@@ -1,4 +1,5 @@
 import { useState, html, useEffect } from '@pionjs/pion';
+import { svg } from 'lit-html';
 
 import { CosmozRatingElement } from '../../types/cosmoz-rating.types';
 
@@ -43,7 +44,7 @@ const useRating = (host: CosmozRatingElement) => {
 		if (disabled) return;
 
 		host.dispatchEvent(
-			new CustomEvent('rating', {
+			new CustomEvent('change', {
 				detail: { rating: starRating },
 				bubbles: true,
 				composed: true,
@@ -52,9 +53,15 @@ const useRating = (host: CosmozRatingElement) => {
 	};
 
 	const handleStarHover = (starRating: number) => {
-		if (!disabled) {
-			setHoveredRating(starRating);
-		}
+		if (disabled) return;
+
+		setHoveredRating(starRating);
+	};
+
+	const handleStarLeave = () => {
+		if (disabled) return;
+
+		setHoveredRating(null);
 	};
 
 	const renderStar = (index: number) => {
@@ -70,16 +77,7 @@ const useRating = (host: CosmozRatingElement) => {
 		const starPath =
 			'M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z';
 
-		if (isPartial) {
-			return html`
-				<svg
-					class="${starClass}"
-					@click="${() => handleStarClick(starRating)}"
-					@mouseenter="${() => handleStarHover(starRating)}"
-					viewBox="0 0 24 24"
-					xmlns="http://www.w3.org/2000/svg"
-				>
-					<defs>
+		const partialPaths = svg`<defs>
 						<clipPath id="clip-${index}">
 							<rect x="0" y="0" width="${fillPercentage}%" height="100%" />
 						</clipPath>
@@ -91,25 +89,27 @@ const useRating = (host: CosmozRatingElement) => {
 						d="${starPath}"
 						fill="var(--rating-star-color)"
 						clip-path="url(#clip-${index})"
-					></path>
-				</svg>
-			`;
-		}
+					></path>`;
 
 		return html`
 			<svg
 				class="${starClass}"
 				@click="${() => handleStarClick(starRating)}"
 				@mouseenter="${() => handleStarHover(starRating)}"
+				@mouseleave="${handleStarLeave}"
 				viewBox="0 0 24 24"
 				xmlns="http://www.w3.org/2000/svg"
 			>
-				<path
+				${isPartial
+					? partialPaths
+					: svg`<path
 					d="${starPath}"
-					fill="${starClass.includes('filled')
-						? 'var(--rating-star-color)'
-						: 'var(--rating-star-color-empty)'}"
-				></path>
+					fill="${
+						starClass.includes('filled')
+							? 'var(--rating-star-color)'
+							: 'var(--rating-star-color-empty)'
+					}"
+				></path>`}
 			</svg>
 		`;
 	};

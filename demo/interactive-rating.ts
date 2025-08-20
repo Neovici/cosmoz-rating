@@ -21,7 +21,7 @@ const InteractiveDemo = () => {
 			<cosmoz-rating
 				rating="${rating || ''}"
 				max-rating="${5}"
-				@rating="${handleRatingChange}"
+				@change="${handleRatingChange}"
 			>
 			</cosmoz-rating>
 

@@ -71,7 +71,8 @@
 		".": "./dist/index.js"
 	},
 	"dependencies": {
-		"@pionjs/pion": "^2.5.2"
+		"@pionjs/pion": "^2.5.2",
+		"lit-html": "^3.3.1"
 	},
 	"devDependencies": {
 		"@commitlint/cli": "^19.2.1",
@@ -94,7 +95,8 @@
 		"semantic-release": "^24.0.0",
 		"sinon": "^19.0.0",
 		"storybook": "^7.0.0",
-		"typescript": "^5.4.3"
+		"typescript": "^5.4.3",
+		"@eslint/eslintrc": "^2.0.0"
 	},
 	"overrides": {
 		"conventional-changelog-conventionalcommits": ">= 8.0.0"
