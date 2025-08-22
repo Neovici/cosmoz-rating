@@ -11,6 +11,13 @@ export default [
 			'.storybook/',
 		],
 	},
+	// Tests often use assertion styles that look like unused expressions (chai). Turn off the rule for test files.
+	{
+		files: ['test/**', '**/*.test.*', 'test/**/*.+(ts|js)'],
+		rules: {
+			'@typescript-eslint/no-unused-expressions': 'off',
+		},
+	},
 	{
 		rules: {
 			'max-lines-per-function': 0,

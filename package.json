@@ -1,11 +1,13 @@
 {
 	"name": "@neovici/cosmoz-rating",
-	"version": "6.3.0",
-	"type": "module",
+	"version": "1.0.0",
 	"description": "A simple rating web component",
 	"keywords": [
-		"lit-html",
-		"web-components"
+		"web-components",
+		"rating",
+		"stars",
+		"pion",
+		"lit-html"
 	],
 	"homepage": "https://github.com/neovici/cosmoz-rating#readme",
 	"bugs": {
@@ -27,6 +29,7 @@
 		"start": "wds",
 		"test": "wtr --coverage",
 		"test:watch": "wtr --watch",
+		"dev": "npm run storybook:start",
 		"storybook:start": "storybook dev -p 8000",
 		"storybook:build": "storybook build",
 		"storybook:deploy": "storybook-to-ghpages",
@@ -53,21 +56,16 @@
 		"types"
 	],
 	"exports": {
-		".": "./dist/index.js",
-		"./use-focus": "./dist/use-focus.js",
-		"./use-floating": "./dist/use-floating.js",
-		"./connectable": "./dist/connectable.js",
-		"./src/use-focus.js": "./dist/use-focus.js"
+		".": "./dist/index.js"
 	},
 	"dependencies": {
-		"@floating-ui/dom": "^1.6.12",
-		"@neovici/cosmoz-utils": "^6.8.1",
 		"@pionjs/pion": "^2.5.2",
-		"lit-html": "^3.1.2"
+		"lit-html": "^3.3.1"
 	},
 	"devDependencies": {
 		"@commitlint/cli": "^19.2.1",
 		"@commitlint/config-conventional": "^19.1.0",
+		"@eslint/eslintrc": "^2.0.0",
 		"@neovici/cfg": "^2.0.0",
 		"@open-wc/testing": "^4.0.0",
 		"@semantic-release/changelog": "^6.0.0",
