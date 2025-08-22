@@ -58,7 +58,7 @@ const useRating = (host: CosmozRatingElement) => {
 		setHoveredRating(starRating);
 	};
 
-	const handleStarLeave = () => {
+	const handleComponentLeave = () => {
 		if (disabled) return;
 
 		setHoveredRating(null);
@@ -96,7 +96,6 @@ const useRating = (host: CosmozRatingElement) => {
 				class="${starClass}"
 				@click="${() => handleStarClick(starRating)}"
 				@mouseenter="${() => handleStarHover(starRating)}"
-				@mouseleave="${handleStarLeave}"
 				viewBox="0 0 24 24"
 				xmlns="http://www.w3.org/2000/svg"
 			>
@@ -114,7 +113,7 @@ const useRating = (host: CosmozRatingElement) => {
 		`;
 	};
 
-	return { rating, disabled, maxRating, setHoveredRating, renderStar };
+	return { rating, disabled, maxRating, handleComponentLeave, renderStar };
 };
 
 export default useRating;

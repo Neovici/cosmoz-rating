@@ -4,10 +4,10 @@ import { styles } from './rating.css';
 import { CosmozRatingElement } from '../types/cosmoz-rating.types';
 
 const Rating = (host: CosmozRatingElement) => {
-	const { maxRating, renderStar } = useRating(host);
+	const { maxRating, renderStar, handleComponentLeave } = useRating(host);
 
 	return html`
-		<div class="rating-container">
+		<div class="rating-container" @mouseleave=${handleComponentLeave}>
 			${Array.from({ length: maxRating }, (_, index) => renderStar(index))}
 		</div>
 	`;
