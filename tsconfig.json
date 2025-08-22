@@ -9,7 +9,9 @@
 		"allowJs": true,
 		"types": ["node", "mocha"],
 		"paths": {
-			"@neovici/cosmoz-utils/*": ["./node_modules/@neovici/cosmoz-utils/dist/*"]
+			"@neovici/cosmoz-rating/*": [
+				"./node_modules/@neovici/cosmoz-rating/dist/*"
+			]
 		}
 	}
 }
