@@ -670,7 +670,7 @@ const useRating = (host) => {
     if (disabled) return;
     setHoveredRating(starRating);
   };
-  const handleStarLeave = () => {
+  const handleComponentLeave = () => {
     if (disabled) return;
     setHoveredRating(null);
   };
@@ -701,7 +701,6 @@ const useRating = (host) => {
 				class="${starClass}"
 				@click="${() => handleStarClick(starRating)}"
 				@mouseenter="${() => handleStarHover(starRating)}"
-				@mouseleave="${handleStarLeave}"
 				viewBox="0 0 24 24"
 				xmlns="http://www.w3.org/2000/svg"
 			>
@@ -712,7 +711,7 @@ const useRating = (host) => {
 			</svg>
 		`;
   };
-  return { rating, disabled, maxRating, setHoveredRating, renderStar };
+  return { rating, disabled, maxRating, handleComponentLeave, renderStar };
 };
 
 const styles = css`
@@ -752,9 +751,9 @@ const styles = css`
 `;
 
 const Rating = (host) => {
-  const { maxRating, renderStar } = useRating(host);
+  const { maxRating, renderStar, handleComponentLeave } = useRating(host);
   return x`
-		<div class="rating-container">
+		<div class="rating-container" @mouseleave=${handleComponentLeave}>
 			${Array.from({ length: maxRating }, (_, index) => renderStar(index))}
 		</div>
 	`;
