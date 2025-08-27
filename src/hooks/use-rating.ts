@@ -1,7 +1,7 @@
 import { useState, html, useEffect } from '@pionjs/pion';
 import { svg } from 'lit-html';
 
-import { CosmozRatingElement } from '../../types/cosmoz-rating.types';
+import { CosmozRatingElement } from '../types';
 
 const useRating = (host: CosmozRatingElement) => {
 	const [hoveredRating, setHoveredRating] = useState<number | null>(null);
