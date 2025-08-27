@@ -1,3 +1,9 @@
+## [1.1.0](https://github.com/neovici/cosmoz-rating/compare/v1.0.1...v1.1.0) (2025-08-27)
+
+### Features
+
+* **rating:** correct dist folder ([9ec78b7](https://github.com/neovici/cosmoz-rating/commit/9ec78b7a673710dbf2047975fbc6dada49e21bba))
+
 ## [1.0.1](https://github.com/neovici/cosmoz-rating/compare/v1.0.0...v1.0.1) (2025-08-27)
 
 ### Bug Fixes
