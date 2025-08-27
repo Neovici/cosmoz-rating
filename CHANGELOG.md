@@ -1,3 +1,9 @@
+## [1.0.1](https://github.com/neovici/cosmoz-rating/compare/v1.0.0...v1.0.1) (2025-08-27)
+
+### Bug Fixes
+
+* **ci:** correct main branch ([a14e0eb](https://github.com/neovici/cosmoz-rating/commit/a14e0eb9d18e9872845aacbfd079c42e282a4a72))
+
 ## 1.0.0 (2025-08-22)
 
 ### Features
