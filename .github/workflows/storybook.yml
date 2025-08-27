@@ -3,6 +3,7 @@ name: Storybook
 on:
   push:
     branches:
+      - main
       - master
 jobs:
   storybook:
