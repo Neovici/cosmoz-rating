@@ -1,16 +1,18 @@
 import { useState, html, useEffect } from '@pionjs/pion';
 import { svg } from 'lit-html';
+import { useHost } from '@neovici/cosmoz-utils/hooks/use-host';
+import { CosmozRatingProps } from '../types';
 
-import { CosmozRatingElement } from '../types';
+const useRating = (props: CosmozRatingProps) => {
+	const host = useHost();
 
-const useRating = (host: CosmozRatingElement) => {
 	const [hoveredRating, setHoveredRating] = useState<number | null>(null);
 
-	const ratingAttr = host.getAttribute('rating');
-	const rating = ratingAttr ? parseFloat(ratingAttr) : null;
-	const disabled = host.hasAttribute('disabled');
-	const maxRatingAttr = host.getAttribute('max-rating');
-	const maxRating = maxRatingAttr ? parseInt(maxRatingAttr, 10) : 5;
+	const ratingRaw = props.rating;
+	const rating = ratingRaw ? parseFloat(ratingRaw) : null;
+	const disabled = props.disabled;
+	const maxRatingRaw = props.maxRating;
+	const maxRating = maxRatingRaw ? parseInt(maxRatingRaw, 10) : 5;
 
 	useEffect(() => {
 		// Set appropriate tabIndex for accessibility
