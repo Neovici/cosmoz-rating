@@ -701,22 +701,9 @@ const useRating = (host) => {
 						</clipPath>
 					</defs>
 					<!-- Background (empty) star with border -->
-					<path 
-						d="${starPath}" 
-						fill="var(--cosmoz-rating-color-empty)"
-						stroke="var(--cosmoz-rating-color-border)"
-						stroke-width="var(--rating-star-border-width)"
-					></path>
+					<path d="${starPath}"></path>
 					<!-- Partial fill (clipped) star -->
-					<path
-						d="${starPath}"
-						fill="var(--cosmoz-rating-color-fill)"
-						stroke="var(--cosmoz-rating-color-border)"
-						stroke-width="var(--rating-star-border-width)"
-						clip-path="url(#clip-${index})"
-					></path>`;
-    const fillColor = starClass.includes("filled") ? "var(--cosmoz-rating-color-fill)" : "var(--cosmoz-rating-color-empty)";
-    const strokeColor = starClass.includes("filled") ? "var(--cosmoz-rating-color-border)" : "var(--cosmoz-rating-color-border-empty)";
+					<path d="${starPath}" clip-path="url(#clip-${index})"></path>`;
     return x`
 			<svg
 				class="${starClass}"
@@ -725,12 +712,7 @@ const useRating = (host) => {
 				viewBox="-0.5 -0.5 14 13"
 				xmlns="http://www.w3.org/2000/svg"
 			>
-				${isPartial ? partialPaths : b`<path
-					d="${starPath}"
-					fill="${fillColor}"
-					stroke="${strokeColor}"
-					stroke-width="var(--rating-star-border-width)"
-				></path>`}
+				${isPartial ? partialPaths : b`<path d="${starPath}"></path>`}
 			</svg>
 		`;
   };
@@ -781,6 +763,7 @@ const styles = css`
 	.star path {
 		stroke: var(--cosmoz-rating-color-border-empty);
 		stroke-width: var(--rating-star-border-width);
+		fill: var(--cosmoz-rating-color-empty);
 		transition:
 			fill 0.2s ease,
 			stroke 0.2s ease;
@@ -791,7 +774,13 @@ const styles = css`
 		stroke: var(--cosmoz-rating-color-border);
 	}
 
-	.star.partial path {
+	.star.partial > path:first-of-type {
+		fill: var(--cosmoz-rating-color-empty);
+		stroke: var(--cosmoz-rating-color-border);
+	}
+
+	.star.partial > path:last-of-type {
+		fill: var(--cosmoz-rating-color-fill);
 		stroke: var(--cosmoz-rating-color-border);
 	}
 
