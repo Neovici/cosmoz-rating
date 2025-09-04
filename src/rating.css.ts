@@ -44,6 +44,7 @@ export const styles = css`
 	.star path {
 		stroke: var(--cosmoz-rating-color-border-empty);
 		stroke-width: var(--rating-star-border-width);
+		fill: var(--cosmoz-rating-color-empty);
 		transition:
 			fill 0.2s ease,
 			stroke 0.2s ease;
@@ -54,7 +55,13 @@ export const styles = css`
 		stroke: var(--cosmoz-rating-color-border);
 	}
 
-	.star.partial path {
+	.star.partial > path:first-of-type {
+		fill: var(--cosmoz-rating-color-empty);
+		stroke: var(--cosmoz-rating-color-border);
+	}
+
+	.star.partial > path:last-of-type {
+		fill: var(--cosmoz-rating-color-fill);
 		stroke: var(--cosmoz-rating-color-border);
 	}
 

@@ -94,28 +94,9 @@ const useRating = (host: CosmozRatingElement) => {
 						</clipPath>
 					</defs>
 					<!-- Background (empty) star with border -->
-					<path 
-						d="${starPath}" 
-						fill="var(--cosmoz-rating-color-empty)"
-						stroke="var(--cosmoz-rating-color-border)"
-						stroke-width="var(--rating-star-border-width)"
-					></path>
+					<path d="${starPath}"></path>
 					<!-- Partial fill (clipped) star -->
-					<path
-						d="${starPath}"
-						fill="var(--cosmoz-rating-color-fill)"
-						stroke="var(--cosmoz-rating-color-border)"
-						stroke-width="var(--rating-star-border-width)"
-						clip-path="url(#clip-${index})"
-					></path>`;
-
-		const fillColor = starClass.includes('filled')
-			? 'var(--cosmoz-rating-color-fill)'
-			: 'var(--cosmoz-rating-color-empty)';
-
-		const strokeColor = starClass.includes('filled')
-			? 'var(--cosmoz-rating-color-border)'
-			: 'var(--cosmoz-rating-color-border-empty)';
+					<path d="${starPath}" clip-path="url(#clip-${index})"></path>`;
 
 		return html`
 			<svg
@@ -127,12 +108,7 @@ const useRating = (host: CosmozRatingElement) => {
 			>
 				${isPartial
 					? partialPaths
-					: svg`<path
-					d="${starPath}"
-					fill="${fillColor}"
-					stroke="${strokeColor}"
-					stroke-width="var(--rating-star-border-width)"
-				></path>`}
+					: svg`<path d="${starPath}"></path>`}
 			</svg>
 		`;
 	};
