@@ -11,7 +11,7 @@ if (SERVER_CHANNEL_URL) {
 }
 
 const importers = {
-  "./stories/cosmoz-rating.stories.ts": () => import('./cosmoz-rating.stories-CsFHb3c0.js')
+  "./stories/cosmoz-rating.stories.ts": () => import('./cosmoz-rating.stories-CEOi0UpQ.js')
 };
 function importFn(path) {
   return importers[path]();
