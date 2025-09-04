@@ -1,10 +1,10 @@
 import { component, html } from '@pionjs/pion';
 import useRating from './hooks/use-rating';
 import { styles } from './rating.css';
-import { CosmozRatingElement } from './types';
+import { Props } from './types';
 
-const Rating = (host: CosmozRatingElement) => {
-	const { maxRating, renderStar, handleComponentLeave } = useRating(host);
+const Rating = (props: Props) => {
+	const { maxRating, renderStar, handleComponentLeave } = useRating(props);
 
 	return html`
 		<div class="rating-container" @mouseleave=${handleComponentLeave}>
