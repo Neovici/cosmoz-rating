@@ -1,3 +1,9 @@
+## [1.2.0](https://github.com/neovici/cosmoz-rating/compare/v1.1.0...v1.2.0) (2025-09-04)
+
+### Features
+
+* add star border ([025d4e5](https://github.com/neovici/cosmoz-rating/commit/025d4e587f082b81d0487e343732befc6e794378))
+
 ## [1.1.0](https://github.com/neovici/cosmoz-rating/compare/v1.0.1...v1.1.0) (2025-08-27)
 
 ### Features
