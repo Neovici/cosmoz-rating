@@ -1,9 +1,9 @@
 import { useState, html, useEffect } from '@pionjs/pion';
 import { svg } from 'lit-html';
 import { useHost } from '@neovici/cosmoz-utils/hooks/use-host';
-import { CosmozRatingProps } from '../types';
+import { Props } from '../types';
 
-const useRating = (props: CosmozRatingProps) => {
+const useRating = (props: Props) => {
 	const host = useHost();
 
 	const [hoveredRating, setHoveredRating] = useState<number | null>(null);

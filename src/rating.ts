@@ -1,9 +1,9 @@
 import { component, html } from '@pionjs/pion';
 import useRating from './hooks/use-rating';
 import { styles } from './rating.css';
-import { CosmozRatingProps } from './types';
+import { Props } from './types';
 
-const Rating = (props: CosmozRatingProps) => {
+const Rating = (props: Props) => {
 	const { maxRating, renderStar, handleComponentLeave } = useRating(props);
 
 	return html`
