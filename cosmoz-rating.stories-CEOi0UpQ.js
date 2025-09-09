@@ -630,13 +630,20 @@ function pion({ render }) {
 
 const { component} = pion({ render: B });
 
-const useRating = (host) => {
+const useHost = hook(class extends Hook {
+    update() {
+        return this.state.host;
+    }
+});
+
+const useRating = (props) => {
+  const host = useHost();
   const [hoveredRating, setHoveredRating] = useState(null);
-  const ratingAttr = host.getAttribute("rating");
-  const rating = ratingAttr ? parseFloat(ratingAttr) : null;
-  const disabled = host.hasAttribute("disabled");
-  const maxRatingAttr = host.getAttribute("max-rating");
-  const maxRating = maxRatingAttr ? parseInt(maxRatingAttr, 10) : 5;
+  const ratingRaw = props.rating;
+  const rating = ratingRaw ? parseFloat(ratingRaw) : null;
+  const disabled = props.disabled;
+  const maxRatingRaw = props.maxRating;
+  const maxRating = maxRatingRaw ? parseInt(maxRatingRaw, 10) : 5;
   useEffect(() => {
     if (!disabled && host.tabIndex === -1) {
       host.tabIndex = 0;
@@ -790,8 +797,8 @@ const styles = css`
 	}
 `;
 
-const Rating = (host) => {
-  const { maxRating, renderStar, handleComponentLeave } = useRating(host);
+const Rating = (props) => {
+  const { maxRating, renderStar, handleComponentLeave } = useRating(props);
   return x`
 		<div class="rating-container" @mouseleave=${handleComponentLeave}>
 			${Array.from({ length: maxRating }, (_, index) => renderStar(index))}
