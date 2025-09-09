@@ -4,10 +4,8 @@ export interface RatingEvent extends CustomEvent {
 	};
 }
 
-export interface CosmozRatingProps {
-	rating?: number | null;
+export interface Props {
+	rating?: string;
 	disabled?: boolean;
-	maxRating?: number;
+	maxRating?: string;
 }
-
-export interface CosmozRatingElement extends HTMLElement, CosmozRatingProps {}
