@@ -9,13 +9,13 @@
 		"pion",
 		"lit-html"
 	],
-	"homepage": "https://github.com/neovici/cosmoz-rating#readme",
+	"homepage": "https://github.com/Neovici/cosmoz-rating#readme",
 	"bugs": {
-		"url": "https://github.com/neovici/cosmoz-rating/issues"
+		"url": "https://github.com/Neovici/cosmoz-rating/issues"
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/neovici/cosmoz-rating.git"
+		"url": "git+https://github.com/Neovici/cosmoz-rating.git"
 	},
 	"license": "Apache-2.0",
 	"author": "",
